@@ -1,3 +1,5 @@
+#Enlace a Github repo: https://github.com/Carlosaguirre5/tarea-2-smash-bros/tree/main
+
 # Lista de batallas base
 
 batallas = [
