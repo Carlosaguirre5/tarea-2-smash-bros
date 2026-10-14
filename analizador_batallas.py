@@ -333,9 +333,6 @@ batallas = [
     }
 ]
 opcion = ""
-mayor_danio = batallas[0]
-mayor_duracion = batallas[0]
-while opcion != "8":
     print("\nOpciones:")
     print("1. Registrar una nueva batalla")
     print("2. Imprimir todas las batallas")
@@ -358,8 +355,15 @@ while opcion != "8":
         print(mayor_danio["id"], mayor_danio["personaje"], "vs", mayor_danio["oponente"], "- Daño causado:", mayor_danio["danio_causado"], "- Daño recibido:", mayor_danio["danio_recibido"], "- KOs:", mayor_danio["kos"], "- Caídas:", mayor_danio["caidas"], "- Duración:", mayor_danio["duracion"], "- Resultado:", mayor_danio["resultado"])
     elif opcion == "5":
         mayor_duracion = batallas[0]
+        print("Batalla de mayor duración:")
+    elif opcion == "4":
+        suma_danio = 0
+    for batalla in batallas:
+        suma_danio = suma_danio + batalla["danio_causado"]
+    while opcion != "8":
         for batalla in batallas:
             if batalla["duracion"] > mayor_duracion["duracion"]:
                 mayor_duracion = batalla
-        print("Batalla de mayor duración:")
-        print(mayor_duracion["id"], mayor_duracion["personaje"], "vs", mayor_duracion["oponente"], "- Daño causado:", mayor_duracion["danio_causado"], "- Daño recibido:", mayor_duracion["danio_recibido"], "- KOs:", mayor_duracion["kos"], "- Caídas:", mayor_duracion["caidas"], "- Duración:", mayor_duracion["duracion"], "- Resultado:", mayor_duracion["resultado"])
+        promedio_danio = suma_danio / len(batallas)
+        print("Promedio de daño causado:", promedio_danio)
+        print(mayor_duracion["id"], mayor_duracion["personaje"], "vs", mayor_duracion["oponente"], "- Daño causado:", mayor_duracion["danio_causado"], "- Daño recibido:", mayor_duracion["danio_recibido"], "- KOs:", mayor_duracion["kos"], "- Caídas:", mayor_duracion["caidas"], "- Duración:", mayor_duracion["duracion"], "- Resultado:", mayor_duracion["resultado"])5
