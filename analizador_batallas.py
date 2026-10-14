@@ -333,6 +333,7 @@ batallas = [
     }
 ]
 opcion = ""
+while opcion != "8":
     print("\nOpciones:")
     print("1. Registrar una nueva batalla")
     print("2. Imprimir todas las batallas")
@@ -353,17 +354,58 @@ opcion = ""
                 mayor_danio = batalla
         print("Batalla con mayor daño causado:")
         print(mayor_danio["id"], mayor_danio["personaje"], "vs", mayor_danio["oponente"], "- Daño causado:", mayor_danio["danio_causado"], "- Daño recibido:", mayor_danio["danio_recibido"], "- KOs:", mayor_danio["kos"], "- Caídas:", mayor_danio["caidas"], "- Duración:", mayor_danio["duracion"], "- Resultado:", mayor_danio["resultado"])
-    elif opcion == "5":
-        mayor_duracion = batallas[0]
-        print("Batalla de mayor duración:")
     elif opcion == "4":
         suma_danio = 0
-    for batalla in batallas:
-        suma_danio = suma_danio + batalla["danio_causado"]
-    while opcion != "8":
+        for batalla in batallas:
+            suma_danio = suma_danio + batalla["danio_causado"]
+        promedio_danio = suma_danio / len(batallas)
+        print("Promedio de daño causado:", promedio_danio)
+    elif opcion == "6":
+        victorias = 0
+        for batalla in batallas:
+            if batalla["resultado"] == "Victoria":
+                victorias = victorias + 1
+        porcentaje_victorias = (victorias / len(batallas)) * 100
+        print("Porcentaje de victorias:", porcentaje_victorias, "%")
+    elif opcion == "7":
+        ko_acumulados = {}
+        for batalla in batallas:
+            personaje = batalla["personaje"]
+            kos = batalla["kos"]
+            if personaje in ko_acumulados:
+                ko_acumulados[personaje] += kos
+            else:
+                ko_acumulados[personaje] = kos
+        personaje_mas_kos = max(ko_acumulados, key=ko_acumulados.get)
+        print("Personaje con más KOs acumulados:", personaje_mas_kos, "- KOs acumulados:", ko_acumulados[personaje_mas_kos])
+    elif opcion == "1":
+        id = input("Ingrese el ID de la batalla: ")
+        id_batalla = int(id)
+        personaje = input("Ingrese el nombre del personaje: ")
+        oponente = input("Ingrese el nombre del oponente: ")
+        danio_causado = int(input("Ingrese el daño causado: "))
+        danio_recibido = int(input("Ingrese el daño recibido: "))
+        kos = int(input("Ingrese el número de KOs: "))
+        caidas = int(input("Ingrese el número de caídas: "))
+        duracion = int(input("Ingrese la duración de la batalla (en segundos): "))
+        resultado = input("Ingrese el resultado de la batalla (Victoria/Derrota): ").capitalize()
+        nueva_batalla = {
+            "id": id_batalla,
+            "personaje": personaje,
+            "oponente": oponente,
+            "danio_causado": danio_causado,
+            "danio_recibido": danio_recibido,
+            "kos": kos,
+            "caidas": caidas,
+            "duracion": duracion,
+            "resultado": resultado
+        }
+        batallas.append(nueva_batalla)
+        print("Batalla registrada exitosamente.")
+    elif opcion == "5":
+        mayor_duracion = batallas[0]
         for batalla in batallas:
             if batalla["duracion"] > mayor_duracion["duracion"]:
                 mayor_duracion = batalla
-        promedio_danio = suma_danio / len(batallas)
-        print("Promedio de daño causado:", promedio_danio)
-        print(mayor_duracion["id"], mayor_duracion["personaje"], "vs", mayor_duracion["oponente"], "- Daño causado:", mayor_duracion["danio_causado"], "- Daño recibido:", mayor_duracion["danio_recibido"], "- KOs:", mayor_duracion["kos"], "- Caídas:", mayor_duracion["caidas"], "- Duración:", mayor_duracion["duracion"], "- Resultado:", mayor_duracion["resultado"])5
+        print("Batalla de mayor duración:")             
+        print(mayor_duracion["id"], mayor_duracion["personaje"], "vs", mayor_duracion["oponente"], "- Daño causado:", mayor_duracion["danio_causado"], "- Daño recibido:", mayor_duracion["danio_recibido"], "- KOs:", mayor_duracion["kos"], "- Caídas:", mayor_duracion["caidas"], "- Duración:", mayor_duracion["duracion"], "- Resultado:", mayor_duracion["resultado"])
