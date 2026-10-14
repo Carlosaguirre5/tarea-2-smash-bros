@@ -332,4 +332,18 @@ batallas = [
         "resultado": "Derrota"
     }
 ]
-print("Batallas cargadas:", len(batallas))
+opcion = ""
+while opcion != "8":
+    print("\nOpciones:")
+    print("1. Mostrar todas las batallas")
+    print("2. Mostrar batallas ganadas")
+    print("3. Mostrar batallas perdidas")
+    print("4. Mostrar estadísticas de un personaje")
+    print("5. Mostrar estadísticas de un oponente")
+    print("6. Mostrar batalla con mayor daño causado")
+    print("7. Mostrar batalla con mayor duración")
+    print("8. Salir")
+
+    opcion = input("Seleccione una opción: ")
+#print("Batallas cargadas:", len(batallas))
+#print("Personaje primer batalla:", batallas[0]["personaje"])
