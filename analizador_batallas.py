@@ -335,15 +335,15 @@ batallas = [
 opcion = ""
 while opcion != "8":
     print("\nOpciones:")
-    print("1. Mostrar todas las batallas")
-    print("2. Mostrar batallas ganadas")
-    print("3. Mostrar batallas perdidas")
-    print("4. Mostrar estadísticas de un personaje")
-    print("5. Mostrar estadísticas de un oponente")
-    print("6. Mostrar batalla con mayor daño causado")
-    print("7. Mostrar batalla con mayor duración")
-    print("8. Salir")
-
+    print("1. Registrar una nueva batalla")
+    print("2. Imprimir todas las batallas")
+    print("3. Encontrar la batalla con mayor daño causado")
+    print("4. Calcular el promedio de daño causado")
+    print("5. Encontrar la batalla de mayor duración")
+    print("6. Calcular el porcentaje de victorias")
+    print("7. Encontrar el personaje con más KOs acumulados")
+    print("8. Salir del sistema")
     opcion = input("Seleccione una opción: ")
-#print("Batallas cargadas:", len(batallas))
-#print("Personaje primer batalla:", batallas[0]["personaje"])
+    if opcion == "2":
+        for batalla in batallas:
+            print(batalla["id"], batalla["personaje"], "vs", batalla["oponente"], "- Daño causado:", batalla["danio_causado"], "- Daño recibido:", batalla["danio_recibido"], "- KOs:", batalla["kos"], "- Caídas:", batalla["caidas"], "- Duración:", batalla["duracion"], "- Resultado:", batalla["resultado"])
