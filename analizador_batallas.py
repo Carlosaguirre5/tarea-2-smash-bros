@@ -333,6 +333,7 @@ batallas = [
     }
 ]
 opcion = ""
+mayor_danio = batallas[0]
 while opcion != "8":
     print("\nOpciones:")
     print("1. Registrar una nueva batalla")
@@ -347,3 +348,10 @@ while opcion != "8":
     if opcion == "2":
         for batalla in batallas:
             print(batalla["id"], batalla["personaje"], "vs", batalla["oponente"], "- Daño causado:", batalla["danio_causado"], "- Daño recibido:", batalla["danio_recibido"], "- KOs:", batalla["kos"], "- Caídas:", batalla["caidas"], "- Duración:", batalla["duracion"], "- Resultado:", batalla["resultado"])
+    elif opcion == "3":
+        mayor_danio = batallas[0]
+        for batalla in batallas:
+            if batalla["danio_causado"] > mayor_danio["danio_causado"]:
+                mayor_danio = batalla
+        print("Batalla con mayor daño causado:")
+        print(mayor_danio["id"], mayor_danio["personaje"], "vs", mayor_danio["oponente"], "- Daño causado:", mayor_danio["danio_causado"], "- Daño recibido:", mayor_danio["danio_recibido"], "- KOs:", mayor_danio["kos"], "- Caídas:", mayor_danio["caidas"], "- Duración:", mayor_danio["duracion"], "- Resultado:", mayor_danio["resultado"])
